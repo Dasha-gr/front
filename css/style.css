@@ -255,3 +255,52 @@ color: white
     font-size: 20px;
     margin: 10px; 
 }
+
+
+/*---WORK.HTML---*/
+
+.form_text{
+    margin-top: 110px;
+    margin-left: 800px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.forms {
+    width: 650px;
+    height: 450px;
+    margin-top: 7px;
+    margin-left: 600px;
+    border: 3px solid #6c9274;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    width: 400px;
+    height: 30px ;
+    margin-left: 130px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+button[type="submit"] {
+    width: 400px;
+    height: 40px ;
+    margin-left: 130px;
+    border-radius: 8px;
+    margin-top: 15px;
+    transition: 0.5s;
+}
+
+button[type="submit"]:hover {
+    width: 400px;
+    height: 40px ;
+    margin-left: 130px;
+    border-radius: 8px;
+    margin-top: 20px;
+    transform: scale(1.05);
+    border: 2px solid #6c9274;
+}
