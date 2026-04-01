@@ -12,7 +12,7 @@ async function fetchData(fam, name, ote, phone, email) {
 	})
 }
 
-function get_form(){
+function post_form(){
     const btn_form = document.querySelector('#btn_form')
     btn_form.addEventListener('click', event => {
 
@@ -44,9 +44,18 @@ function get_form(){
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-	get_form()
+	post_form()
 })
 
+//Функция для вывода каталога на страницу
 
+async function see_catalog(id, obj_dom) {
+	let url = `http://localhost/myserver/?id=${id}`
+	let response = await fetch(url, {
+		method: 'GET',
+		headers: { Accept: 'application/json' },
+	})
 
+	
+}
 
