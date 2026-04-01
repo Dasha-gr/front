@@ -5,6 +5,8 @@
   font-style: normal;
 } */
 
+
+
 /*---HEADER---*/
 
 .header {
@@ -132,34 +134,45 @@ color: white
 
 /*---CARDS---*/
 
+.cards {
+    position: absolute;
+    width: 79%; 
+    height: auto;
+    left: 22%; 
+    top: 100px; 
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* чтобы карточки не выходили за пределы */
+    margin-top: -20px;
+}
+
 .card {
     width: 200px;
-    height: 320px;
+    height: 295px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 15px;
+    margin: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px;
-    float: left;
+    float: left; 
     box-sizing: border-box;
-    margin-left: 50px;
+    
 }
-
 /*---FOOTER---*/
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: #4a6b50;
-  color: white;
-  width: 100%;
-  height: 175px;
-  padding: 20px 0
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 175px;
+    background-color: #4a6b50;
+    color: white;
+    padding: 20px 0;
+    box-sizing: border-box; /* Чтобы padding не увеличивал высоту */
 }
 
 .block_1{
