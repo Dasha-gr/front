@@ -1,14 +1,14 @@
 // Форма заявки в БД
 
-async function fetchData(fam, name, ote, phone, email) {
-    let url = `http://localhost/myserver/?fam=${fam}&name=${name}&ote=${ote}&phone=${phone}&email=${email}`
+async function fetchData(d) {
+    let url = `http://localhost/front/index.php?d=${d}`
         let response = await fetch(url, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
-		body: new URLSearchParams(d).toString(),
+		body: new URLSearchParams(d).toString(d),
 	})
 }
 
@@ -30,9 +30,10 @@ function post_form(){
         const email = document.querySelector('#email').value
         
         d = { fam: fam, name: name, ote: ote, phone: phone, email: email}
+        console.log(d)
 
         if (shablon_fam.test(fam) && shablon_name.test(name) && shablon_ote.test(ote) && shablon_phone.test(phone) && shablon_email.test(email)) {
-            console.log('Успешно')
+            aletr('Данные успешно добавлены')
             fetchData(d)
         } else {
             console.log('Ошибка')
@@ -60,7 +61,14 @@ document.addEventListener('DOMContentLoaded', function () {
 // 		method: 'GET',
 // 		headers: { Accept: 'application/json' },
 // 	})
+// async function see_catalog(id, obj_dom) {
+// 	let url = `http://localhost/myserver/?id=${id}`
+// 	let response = await fetch(url, {
+// 		method: 'GET',
+// 		headers: { Accept: 'application/json' },
+// 	})
 
 	
+// }
 // }
 
