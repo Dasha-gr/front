@@ -17,12 +17,11 @@ function post_form(){
     btn_form.addEventListener('click', event => {
 
         //шаблоны для проверки полей
-        const shablon_fam = /[а-яА-Я]/
-        const shablon_name = /[а-яА-Я]/
-        const shablon_ote= /[а-яА-Я]/
-        const shablon_phone = /[0-9]/
+        const shablon_fam = /^[А-Я][а-я]*$/;
+        const shablon_name = /^[А-Я][а-я]*$/;
+        const shablon_ote= /^[А-Я][а-я]*$/;
+        const shablon_phone = /[0-9]{11}/
         const shablon_email = /\S+@\S+\.\S+/ //шаблон для символа "@"" и "."и без пробелов
-
 
         const fam = document.querySelector('#fam').value
         const name = document.querySelector('#name').value
@@ -37,6 +36,12 @@ function post_form(){
             fetchData(d)
         } else {
             console.log('Ошибка')
+            if (!shablon_fam.test(fam)) alert('Неправильная фамилия');
+            if (!shablon_name.test(name)) alert('Неправильное имя');
+            if (!shablon_ote.test(ote)) alert('Неправильное отчество');
+            if (!shablon_phone.test(phone)) alert('Неправильный номер');
+            if (!shablon_email.test(email)) alert('Неправильный email');
+            
         }
 
         event.preventDefault()
@@ -49,13 +54,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Функция для вывода каталога на страницу
 
-async function see_catalog(id, obj_dom) {
-	let url = `http://localhost/myserver/?id=${id}`
-	let response = await fetch(url, {
-		method: 'GET',
-		headers: { Accept: 'application/json' },
-	})
+// async function see_catalog(id, obj_dom) {
+// 	let url = `http://localhost/myserver/?id=${id}`
+// 	let response = await fetch(url, {
+// 		method: 'GET',
+// 		headers: { Accept: 'application/json' },
+// 	})
 
 	
-}
+// }
 
