@@ -1,21 +1,19 @@
 // Форма заявки в БД
-
 async function fetchData(d) {
-    let url = `http://localhost/front/index.php?d=${d}`
+    let url = `http://localhost/myserver/post`
         let response = await fetch(url, {
 		method: 'POST',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/x-www-form-urlencoded',
 		},
-		body: new URLSearchParams(d).toString(d),
+		body: new URLSearchParams(d).toString(),
 	})
 }
 
 function post_form(){
     const btn_form = document.querySelector('#btn_form')
     btn_form.addEventListener('click', event => {
-
         //шаблоны для проверки полей
         const shablon_fam = /^[А-Я][а-я]*$/;
         const shablon_name = /^[А-Я][а-я]*$/;
@@ -33,15 +31,15 @@ function post_form(){
         console.log(d)
 
         if (shablon_fam.test(fam) && shablon_name.test(name) && shablon_ote.test(ote) && shablon_phone.test(phone) && shablon_email.test(email)) {
-            aletr('Данные успешно добавлены')
+            alert('Данные успешно добавлены')
             fetchData(d)
         } else {
             console.log('Ошибка')
-            if (!shablon_fam.test(fam)) alert('Неправильная фамилия');
-            if (!shablon_name.test(name)) alert('Неправильное имя');
-            if (!shablon_ote.test(ote)) alert('Неправильное отчество');
-            if (!shablon_phone.test(phone)) alert('Неправильный номер');
-            if (!shablon_email.test(email)) alert('Неправильный email');
+            if (!shablon_fam.test(fam)) alert('Пожалуйста, заполните поле или проверьте написание фамилии.')
+            if (!shablon_name.test(name)) alert('Пожалуйста, заполните поле или проверьте написание имени.');
+            if (!shablon_ote.test(ote)) alert('Пожалуйста, заполните поле или проверьте написание отчества.');
+            if (!shablon_phone.test(phone)) alert('Пожалуйста, заполните поле или проверьте написание номера телефона.');
+            if (!shablon_email.test(email)) alert('Пожалуйста, заполните поле или проверьте написание электронной почты.');
             
         }
 
@@ -53,22 +51,24 @@ document.addEventListener('DOMContentLoaded', function () {
 	post_form()
 })
 
-//Функция для вывода каталога на страницу
+// Функция для вывода каталога на страницу
+async function see_catalog() {
+    const catalog_menu = document.querySelector('.catalog_menu');
 
-// async function see_catalog(id, obj_dom) {
-// 	let url = `http://localhost/myserver/?id=${id}`
-// 	let response = await fetch(url, {
-// 		method: 'GET',
-// 		headers: { Accept: 'application/json' },
-// 	})
-// async function see_catalog(id, obj_dom) {
-// 	let url = `http://localhost/myserver/?id=${id}`
-// 	let response = await fetch(url, {
-// 		method: 'GET',
-// 		headers: { Accept: 'application/json' },
-// 	})
+    let url = `http://localhost/myserver/get`;
+    
+    let response = await fetch(url);  // Выполняем GET-запрос к серверу
+    let data = await response.json();  // Преобразуем ответ сервера из JSON-формата в JavaScript-объект
 
-	
-// }
-// }
+     // Перебираем каждый элемент массива data
+    for (let item of data) {
+    const newLi = document.createElement('li');
+    newLi.textContent = item.name_catalog
+    catalog_menu.appendChild(newLi); // Добавляем созданный <li> внутрь <ul>
+}
+}
 
+// Вызов при загрузке страницы
+document.addEventListener('DOMContentLoaded', function () {
+    see_catalog();
+});

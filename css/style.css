@@ -134,16 +134,18 @@ color: white
 
 /*---CARDS---*/
 
+/*---CARDS---*/
 .cards {
     position: absolute;
     width: 79%; 
-    height: auto;
     left: 22%; 
     top: 100px; 
     padding: 20px;
     box-sizing: border-box;
-    overflow: hidden; /* чтобы карточки не выходили за пределы */
     margin-top: -20px;
+    display: flex; 
+    flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+    gap: 18px; /* Задаем отступы между карточками */
 }
 
 .card {
@@ -152,15 +154,19 @@ color: white
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    margin: 18px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 15px;
-    float: left; 
     box-sizing: border-box;
-    
 }
+
+.card img {
+    left: auto;
+    top: auto;
+    width: 100%;
+    height: auto;
+    display: block; 
+    border-radius: 10px;
+}
+
 /*---FOOTER---*/
 
 .footer {
