@@ -38,27 +38,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-/*---SEARCH---*/
-
-.search {
-    width: 53%;
-    height: 80px;
-    float: left;
-}
-
-input[type="search_text"] {
-    width: 49%;
-    height: 56px;
-    border-color: #6c9274;
-    border-radius: 7px  ;
-    outline: none;
-    position: absolute;
-    left: 329px;
-    top: 12px;
-    box-sizing: border-box;
-    float: left;
-}
-
 /*---MENU---*/
 
 .menu {
@@ -104,6 +83,13 @@ input[type="search_text"] {
     border-color: #9DB3A6; 
 }
 
+.catalog p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    color: white;
+    margin-left: 95px;
+}
+
 
 .catalog_menu li a {
     text-decoration: none;
@@ -113,13 +99,35 @@ input[type="search_text"] {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     text-transform: uppercase;
-color: white
+    color: white
 
 }
 
-.catalog_menu{
-    list-style-type: none;
+.catalog_menu {
+    list-style-type: none; 
+    padding-left: 0;       
+    color: white;         
+    width: 100%;           
+    float: left;           
+    font-family: Arial, sans-serif; 
 }
+
+.catalog_menu li {
+    margin: 0;                 
+    padding: 10px 15px;      
+    border-bottom: 1px solid rgba(255,255,255,0.2); 
+    cursor: pointer;            /* Курсор руки */
+}
+.catalog_menu li:hover {
+    background-color: rgba(255,255,255,0.1); 
+}
+
+/* Оформление активных категорий */
+.catalog-item.active {
+    background-color: #f0f0ff;
+    font-weight: bold;
+}
+
 
 /*---CONTENT---*/
 
@@ -131,8 +139,6 @@ color: white
     left: 500px;
     top: 100px;
 }
-
-/*---CARDS---*/
 
 /*---CARDS---*/
 .cards {
@@ -150,7 +156,7 @@ color: white
 
 .card {
     width: 200px;
-    height: 295px;
+    height: 310px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -165,6 +171,11 @@ color: white
     height: auto;
     display: block; 
     border-radius: 10px;
+}
+
+.card p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
 }
 
 /*---FOOTER---*/
@@ -228,23 +239,6 @@ color: white
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     color: white;
-}
-
-
-@media (min-width: 1400px) and (max-width: 1500px) {
-    .menu_name li {
-        float: left;
-        margin-left: 99px;
-        margin-top: -8px;
-    }
-}
-
-@media (min-width: 1200px) and (max-width: 1400px) {
-    .menu_name li {
-        float: left;
-        margin-left: 90px;
-        margin-top: -8px;
-    }
 }
 
 /*---CONNECTION.HTML---*/
@@ -337,14 +331,308 @@ button[type="submit"]:hover {
     border: 2px solid #6c9274;
 }
 
-
-/*---SERVICES.HTML---*/
-
-.zagolov_1 {
-    position: absolute;
-    width: 300px;
-    height: 100px;
-    float: left;
-    left: 20px;
-    top: 80px;
+.modal {
+  display: none; /* Изначально скрыто */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 }
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+
+/*---BLOG.HTML---*/
+
+.container_block {
+    position: absolute;
+    width: 99%;
+    height: 300px; 
+    float: left;
+    top: 170px;
+    border-radius: 10px;
+    background-color: #868686;
+    overflow: hidden; /* Обрезаем лишнее */
+}
+
+/*---SLIDER---*/    
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%; 
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.slide {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Обрезаем картинку по границам слайда */
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Заполняет слайд полностью с обрезкой */
+    display: block;
+    border-radius: inherit;
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(85, 124, 101, 0.8);
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.prev {
+    left: 15px;
+}
+
+.next {
+    right: 15px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(156, 151, 151, 1);
+}
+
+@media (max-width: 768px) {
+    .container_block {
+        height: 200px; /* Меньше на мобильных */
+        top: 150px;
+    }
+}
+
+/* Убираем абсолютное позиционирование */
+.blog_text {
+    position: static; /* Теперь элемент находится в потоке страницы */
+    width: 98%;
+    max-width: 1200px;
+    padding: 35px 40px;
+    margin-top: 20px; /* Добавляем отступ сверху для разделения с слайдером */
+}
+.blog_text p {
+    color: #4a5d4a;
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+    text-align: justify;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    /* HEADER */
+    .header {
+        height: 70px;
+    }
+    
+    .log p {
+        font-size: 20px;
+        left: 15px;
+        top: 0;
+    }
+    
+    .menu {
+        width: auto;
+        margin-left: 10px;
+    }
+    
+    .menu_name li {
+        margin-left: 15px;
+        font-size: 14px;
+    }
+
+    /* CATALOG */
+    .catalog {
+        position: static;
+        width: 90%;
+        height: 200px;
+        margin: 10px auto;
+        top: auto;
+        left: 5%;
+        border-radius: 8px;
+    }
+    
+    .catalog p {
+        font-size: 20px;
+        text-align: center;
+        margin-left: 0;
+    }
+    
+    .catalog_menu li {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    /* CARDS */
+    .cards {
+        position: static;
+        width: 100%;
+        left: 0;
+        top: 0;
+        padding: 15px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .card {
+        width: calc(50% - 12px); /* 2 в ряд */
+        height: 280px;
+        margin-bottom: 10px;
+    }
+
+    /* FOOTER */
+    .footer {
+        position: static;
+        height: auto;
+        padding: 20px 10px;
+    }
+    
+    .block_1,
+    .block_2 {
+        width: 100%;
+        float: none;
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .block_1 h1 {
+        position: static;
+        text-align: center;
+    }
+    
+    .info {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    /* FORM (WORK.HTML) */
+    .form_text {
+        margin: 80px 20px 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+    
+    .forms {
+        width: 90%;
+        margin: 10px auto;
+        padding: 20px;
+    }
+    
+    input[type="text"],
+    button[type="submit"] {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* CONTACT (CONNECTION.HTML) */
+    .contact {
+        width: 90%;
+        margin: 100px auto 20px;
+        top: auto;
+        left: auto;
+    }
+
+    /* BLOG */
+    .container_block {
+        width: 90%;
+        height: 200px;
+        top: 100px;
+        margin: 0 auto;
+    }
+    
+    .blog_text {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+}
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .header {
+        height: 75px;
+    }
+    
+    .log p {
+        font-size: 24px;
+    }
+    
+    .catalog {
+        width: 25%;
+        height: 450px;
+        top: 100px;
+        left: 10px;
+    }
+    
+    .cards {
+        left: 28%;
+        width: 68%;
+    }
+    
+    .card {
+        width: calc(25% - 14px);
+        height: 290px;
+    }
+    
+    .forms {
+        width: 700px;
+        margin-left: 200px;
+    }
+    
+    .contact {
+        width: 700px;
+        top: 120px;
+    }
+}
+
+
+
